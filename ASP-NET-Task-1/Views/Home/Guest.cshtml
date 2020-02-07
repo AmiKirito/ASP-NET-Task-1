@@ -1,0 +1,26 @@
+﻿@using ASP_NET_Task_1.Models
+@model ICollection<Survey>
+
+@{
+    ViewBag.Title = "Гостевая";
+}
+<h2>Гостевая</h2>
+
+@using (Html.BeginForm("AddSurvey", "Home"))
+{
+    <h3>Добавить отзыв</h3>
+    <lable>Имя:</lable>
+    @Html.TextBox(nameof(Survey.AuthorName), null, new { @class = "inputs" })
+    <br /><br />
+    <lable>Текст:</lable>
+    @Html.TextBox(nameof(Survey.ReviewText), null)
+    <br /><br />
+    <input type="submit" value="Добавить" />
+}
+
+@foreach (var survey in Model)
+{
+    <h3>Имя автора: @survey.AuthorName</h3>
+    <h4>Дата: @survey.PostDate.ToShortDateString()</h4>
+    <h4>Содержимое: @survey.ReviewText</h4>
+}

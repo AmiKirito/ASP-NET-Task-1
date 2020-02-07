@@ -1,0 +1,47 @@
+﻿@using ASP_NET_Task_1.Models
+@model List<string>
+@{
+    ViewBag.Title = "SurveyForm";
+}
+
+<h2>Анкета</h2>
+
+@Html.UlHelper(Model as List<string>)
+<h3>Опрос</h3>
+@using (Html.BeginForm("SurveyForm", "Home"))
+{
+    <p>What city you would like to visit?</p>
+    <input type="text" name="city" />
+    <p>What is your favourite fruit?</p>
+    <input type="text" name="fruit" />
+    <p>What is the math square of 9?</p>
+    <fieldset id="radio1">
+        <input type="radio" name="radio1" value="3" /> 3<br />
+        <input type="radio" name="radio1" value="4" /> 4<br />
+        <input type="radio" name="radio1" value="10" /> 10
+    </fieldset>
+    <p>What cars would you prefer to buy?</p>
+    <fieldset id="check1">
+        <input type="checkbox" name="check1" value="Bugatti" /> Bugatti<br />
+        <input type="checkbox" name="check1" value="McLaren" /> McLaren<br />
+        <input type="checkbox" name="check1" value="Toyota" /> Toyota
+    </fieldset>
+    <p>What drink you'd like to order?</p>
+    <fieldset id="radio2">
+        <input type="radio" name="radio2" value="Sprite" /> Sprite<br />
+        <input type="radio" name="radio2" value="Cola" /> Cola<br />
+        <input type="radio" name="radio2" value="Fanta" /> Fanta
+    </fieldset>
+    <p>What qualities do you like in people?</p>
+    <fieldset id="check2">
+        <input type="checkbox" name="check2" value="Honesty" /> Honesty<br />
+        <input type="checkbox" name="check2" value="Curiosity" /> Curiosity<br />
+        <input type="checkbox" name="check2" value="Creativity" /> Creativity
+    </fieldset>
+    <br />
+    <input type="submit" id="submit" value="Результаты" />
+    <br />
+    <br />
+}
+
+

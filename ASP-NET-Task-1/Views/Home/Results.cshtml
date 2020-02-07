@@ -1,0 +1,22 @@
+﻿@using ASP_NET_Task_1.Models
+@model List<string>
+
+@{
+    ViewBag.Title = "Результаты";
+}
+<style>
+    .main-body {
+        height: 500px;
+    }
+</style>
+@if (Model != null && Model.Count != 0)
+{
+    <h2>Ваши ответы:</h2>
+    @Html.UlHelper(Model as List<string>);
+    <a id="anc" href="@Url.Action("SurveyForm", "Home")">Вернутся к анкетированию</a>
+}
+else
+{
+    <h2>Вы не выбрали ни одного ответа</h2>
+    <a id="anc" href="@Url.Action("SurveyForm", "Home")">Вернутся к анкетированию</a>
+}

@@ -1,0 +1,18 @@
+﻿@using ASP_NET_Task_1.Models
+@model ICollection<Article>
+
+@{
+    ViewBag.Title = "Главная";
+}
+
+<h2>Главная</h2>
+<hr />
+
+@foreach (var article in Model)
+{
+
+    <h3>Название - @article.Title</h3>
+    <h4>Дата публикации - @article.PublishDate.ToShortDateString()</h4>
+    <h4>Содержание - @article.TextContent</h4>
+    <hr />
+}
