@@ -6,11 +6,12 @@
 }
 <style>
     .main-body {
-        height: 500px;
+        min-height: 200px;
     }
 </style>
 @if (Model != null && Model.Count != 0)
 {
+    <h3>Пример использования UlHelper-а:</h3>
     <h2>Ваши ответы:</h2>
     @Html.UlHelper(Model as List<string>);
     <a id="anc" href="@Url.Action("SurveyForm", "Home")">Вернутся к анкетированию</a>

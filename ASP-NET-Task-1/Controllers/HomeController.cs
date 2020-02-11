@@ -29,7 +29,6 @@ namespace ASP_NET_Task_1.Controllers
                     {
                         try
                         {
-
                             data.Add(form[form.AllKeys[i]]);
                         }
                     catch { }

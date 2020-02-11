@@ -17,10 +17,12 @@
     <br /><br />
     <input type="submit" value="Добавить" />
 }
-
+<h3>Отзывы:</h3>
+<hr />
 @foreach (var survey in Model)
 {
     <h3>Имя автора: @survey.AuthorName</h3>
     <h4>Дата: @survey.PostDate.ToShortDateString()</h4>
     <h4>Содержимое: @survey.ReviewText</h4>
+    <hr />
 }
