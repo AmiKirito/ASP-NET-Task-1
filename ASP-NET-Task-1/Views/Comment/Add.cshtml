@@ -1,0 +1,46 @@
+﻿@using DAL.ViewModels;
+@model  CommentCreateViewModel
+
+@{
+    int Id;
+    if(ViewBag.ArticleId == null)
+    {
+        Id = 1;
+    }
+    else
+    {
+        Id = ViewBag.ArticleId;
+    }
+
+    ViewBag.Title = "Добавить комментарий";
+}
+
+@using (Html.BeginForm("Add", "Comment", Id))
+{    
+    <div class="form-horizontal">
+        <h4>Comment</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.Hidden("ArticleId", Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AuthorName,"Имя:", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AuthorName)
+                @Html.ValidationMessageFor(model => model.AuthorName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Text, "Текст:", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Text)
+                @Html.ValidationMessageFor(model => model.Text)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Добавить" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

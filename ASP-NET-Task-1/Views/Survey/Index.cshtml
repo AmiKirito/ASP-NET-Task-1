@@ -1,14 +1,14 @@
-﻿@using ASP_NET_Task_1.Models
+﻿@using ASP_NET_Task_1.Helpers.HtmlHelperExtensions;
 @model List<string>
 @{
-    ViewBag.Title = "SurveyForm";
+    ViewBag.Title = "Анкета";
 }
 
 <h2>Анкета</h2>
 <h3>Пример использования OlHelper-а:</h3>
 @Html.OlHelper(Model as List<string>)
 <h3>Опрос</h3>
-@using (Html.BeginForm("SurveyForm", "Home"))
+@using (Html.BeginForm("Index", "Survey"))
 {
     <p>What city you would like to visit?</p>
     <input type="text" name="city" />

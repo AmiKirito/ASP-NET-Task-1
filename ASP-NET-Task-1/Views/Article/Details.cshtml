@@ -1,0 +1,21 @@
+﻿@using DAL.Models;
+@model Article
+
+@{ 
+    ViewBag.Title =  $"Детали статьи {Model.Title}";
+}
+
+<h3>@Model.Title</h3>
+<h3>@Model.TextContent</h3>
+
+<h2>Comments: </h2>
+<hr />
+<a href="@Url.Action("Add","Comment", new { id = Convert.ToInt32(Model.Id) })" class="btn btn-primary">Добавить комментарий</a>
+<hr />
+@foreach (var comment in Model.Comments.OrderByDescending(c => c.PostDate))
+{
+    <h4>@comment.AuthorName</h4>
+    <h4>@comment.ReviewText</h4>
+    <h4>@comment.PostDate.ToShortDateString()</h4>
+    <hr />
+}

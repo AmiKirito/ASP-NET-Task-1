@@ -1,4 +1,4 @@
-﻿@using ASP_NET_Task_1.Models
+﻿@using ASP_NET_Task_1.Helpers.HtmlHelperExtensions;
 @model List<string>
 
 @{
@@ -14,10 +14,9 @@
     <h3>Пример использования UlHelper-а:</h3>
     <h2>Ваши ответы:</h2>
     @Html.UlHelper(Model as List<string>);
-    <a id="anc" href="@Url.Action("SurveyForm", "Home")">Вернутся к анкетированию</a>
 }
 else
 {
     <h2>Вы не выбрали ни одного ответа</h2>
-    <a id="anc" href="@Url.Action("SurveyForm", "Home")">Вернутся к анкетированию</a>
 }
+<a id="anc" href="@Url.Action("Index", "Survey")">Вернутся к анкетированию</a>

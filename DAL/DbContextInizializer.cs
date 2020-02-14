@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Data.Entity;
+using DAL.Models;
 
-namespace ASP_NET_Task_1.Models
+namespace DAL
 {
-    public static class ArticleData
+    class DbContextInizializer : DropCreateDatabaseIfModelChanges<AppDbContext>
     {
-        public static ICollection<Article> Articles { get; } = new List<Article>()
+        protected override void Seed(AppDbContext context)
         {
-            new Article()
+            Article art1 = new Article()
             {
+                Id = "1",
                 Title = "BBC",
                 PublishDate = DateTime.Now,
                 TextContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
@@ -18,9 +18,10 @@ namespace ASP_NET_Task_1.Models
                 "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." +
                 " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." +
                 " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            },
-            new Article()
+            };
+            Article art2 = new Article()
             {
+                Id = "2",
                 Title = "Discovery",
                 PublishDate = DateTime.Now,
                 TextContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
@@ -28,9 +29,10 @@ namespace ASP_NET_Task_1.Models
                 "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." +
                 " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." +
                 " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            },
-            new Article()
+            };
+            Article art3 = new Article()
             {
+                Id = "3",
                 Title = "Nat Geo Wild",
                 PublishDate = DateTime.Now,
                 TextContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
@@ -38,10 +40,10 @@ namespace ASP_NET_Task_1.Models
                 "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." +
                 " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." +
                 " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            }
-            ,
-            new Article()
+            };
+            Article art4 = new Article()
             {
+                Id = "4",
                 Title = "TV1000",
                 PublishDate = DateTime.Now,
                 TextContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
@@ -49,45 +51,69 @@ namespace ASP_NET_Task_1.Models
                 "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." +
                 " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." +
                 " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            }
+            };
+            context.Articles.Add(art1);
+            context.Articles.Add(art2);
+            context.Articles.Add(art3);
+            context.Articles.Add(art4);
 
-        };
-    }
-    public static class ReviewsData
-    {
-        public static ICollection<Survey> Surveys { get; } = new List<Survey>()
-        {
-            new Survey()
+            Comment cmt1 = new Comment()
             {
+                Id = "1",
                 AuthorName = "John",
                 PostDate = DateTime.Now,
-                ReviewText = "This is cool blog"
-            },
-            new Survey()
+                ReviewText = "Nice article",
+                ArticleId = "1"
+            };
+            Comment cmt2 = new Comment()
             {
+                Id = "2",
                 AuthorName = "Marcus",
                 PostDate = DateTime.Now,
-                ReviewText = "Wanna pass the survey again soon"
-            },
-            new Survey()
+                ReviewText = "Good job",
+                ArticleId = "1"
+            };
+            Comment cmt3 = new Comment()
             {
+                Id = "3",
                 AuthorName = "Phillip",
                 PostDate = DateTime.Now,
-                ReviewText = "Cool test"
-            },
-            new Survey()
+                ReviewText = "Awesome article!",
+                ArticleId = "2"
+            };
+            Comment cmt4 = new Comment()
             {
+                Id = "4",
                 AuthorName = "Andrea",
                 PostDate = DateTime.Now,
-                ReviewText = "Nice styles, lol"
-            },
-            new Survey()
+                ReviewText = "I really liked it",
+                ArticleId = "3"
+            };
+            Comment cmt5 = new Comment()
             {
+                Id = "5",
                 AuthorName = "Simon",
                 PostDate = DateTime.Now,
-                ReviewText = "I wanna hire your web-designer"
-            }
+                ReviewText = "Looking forward for a new one",
+                ArticleId = "3"
+            };
+            Comment cmt6 = new Comment()
+            {
+                Id = "6",
+                AuthorName = "Dennys",
+                PostDate = DateTime.Now,
+                ReviewText = "Nice",
+                ArticleId = "4"
+            };
+            context.Comments.Add(cmt1);
+            context.Comments.Add(cmt2);
+            context.Comments.Add(cmt3);
+            context.Comments.Add(cmt4);
+            context.Comments.Add(cmt5);
+            context.Comments.Add(cmt6);
 
-        };
+            context.SaveChanges();
+            base.Seed(context);
+        }
     }
 }

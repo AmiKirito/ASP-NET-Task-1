@@ -1,4 +1,4 @@
-﻿@using ASP_NET_Task_1.Models
+﻿@using DAL.Models;
 @model ICollection<Survey>
 
 @{
@@ -6,7 +6,7 @@
 }
 <h2>Гостевая</h2>
 
-@using (Html.BeginForm("AddSurvey", "Home"))
+@using (Html.BeginForm("AddSurvey", "Guest"))
 {
     <h3>Добавить отзыв</h3>
     <lable>Имя:</lable>
@@ -19,7 +19,7 @@
 }
 <h3>Отзывы:</h3>
 <hr />
-@foreach (var survey in Model)
+@foreach (var survey in Model.OrderByDescending(s => s.PostDate))
 {
     <h3>Имя автора: @survey.AuthorName</h3>
     <h4>Дата: @survey.PostDate.ToShortDateString()</h4>

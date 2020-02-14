@@ -1,5 +1,5 @@
-﻿@using ASP_NET_Task_1.Models
-@model ICollection<Article>
+﻿@using DAL.Models;
+@model  Article[]
 
 @{
     ViewBag.Title = "Главная";
@@ -10,9 +10,9 @@
 
 @foreach (var article in Model)
 {
-
     <h3>Название - @article.Title</h3>
     <h4>Дата публикации - @article.PublishDate.ToShortDateString()</h4>
     <h4>Содержание - @article.TextContent</h4>
+    <a href="@Url.Action("Details", "Article", new { id = article.Id })">Детали</a>
     <hr />
 }
