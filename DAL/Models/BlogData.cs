@@ -4,56 +4,8 @@ using System.Collections.Generic;
 namespace DAL.Models
 {
     /// <summary>
-    /// Contains test data of the project - TO REMOVE
+    /// Contains test data of the guest page
     /// </summary>
-    public static class ArticleData
-    {
-        public static ICollection<Article> Articles { get; } = new List<Article>()
-        {
-            new Article()
-            {
-                Title = "BBC",
-                PublishDate = DateTime.Now,
-                TextContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
-                "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
-                "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." +
-                " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." +
-                " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            },
-            new Article()
-            {
-                Title = "Discovery",
-                PublishDate = DateTime.Now,
-                TextContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
-                "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
-                "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." +
-                " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." +
-                " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            },
-            new Article()
-            {
-                Title = "Nat Geo Wild",
-                PublishDate = DateTime.Now,
-                TextContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
-                "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
-                "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." +
-                " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." +
-                " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            }
-            ,
-            new Article()
-            {
-                Title = "TV1000",
-                PublishDate = DateTime.Now,
-                TextContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
-                "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
-                "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." +
-                " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." +
-                " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            }
-
-        };
-    }
     public static class ReviewsData
     {
         public static ICollection<Survey> Surveys { get; } = new List<Survey>()
