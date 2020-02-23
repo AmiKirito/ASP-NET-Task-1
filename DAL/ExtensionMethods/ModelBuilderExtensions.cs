@@ -11,6 +11,15 @@ namespace DAL.ExtensionMethods
                 .HasMany<Comment>(a => a.Comments)
                 .WithRequired(s => s.Article)
                 .WillCascadeOnDelete();
+            modelBuilder.Entity<Article>()
+                .HasMany<Tag>(a => a.Tags)
+                .WithMany(t => t.Articles)
+                .Map(m =>
+                {
+                    m.MapLeftKey("ArticleId");
+                    m.MapRightKey("TagId");
+                    m.ToTable("ArticleTags");
+                });
         }
     }
 }

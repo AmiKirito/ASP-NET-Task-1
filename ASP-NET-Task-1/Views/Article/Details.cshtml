@@ -1,12 +1,26 @@
 ﻿@using DAL.Models;
 @model Article
 
-@{ 
-    ViewBag.Title =  $"Детали статьи {Model.Title}";
+@{
+    ViewBag.Title = $"Детали статьи {Model.Title}";
 }
 
 <h3>@Model.Title</h3>
 <h3>@Model.TextContent</h3>
+
+@if (Model.Tags.Count == 0)
+{
+    <h2>This article has no tags yet</h2>
+}
+else
+{
+    <h2>Tags: </h2>
+    foreach (var tag in Model.Tags.OrderByDescending(t => t.Value))
+    {
+        <p>@tag.Value</p>
+    }
+}
+
 
 <h2>Comments: </h2>
 <hr />

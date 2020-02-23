@@ -1,13 +1,51 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using DAL.Models;
 
 namespace DAL
 {
-    class DbContextInizializer : DropCreateDatabaseIfModelChanges<AppDbContext>
+    class DbContextInizializer : DropCreateDatabaseAlways<AppDbContext>
     {
         protected override void Seed(AppDbContext context)
         {
+            List<Tag> tags = new List<Tag>()
+            {
+                new Tag()
+                {
+                    Id = "1",
+                    Value = "BBC"
+                },
+                new Tag()
+                {
+                    Id = "2",
+                    Value = "science"
+                },
+                new Tag()
+                {
+                    Id = "3",
+                    Value = "fiction"
+                },
+                new Tag()
+                {
+                    Id = "4",
+                    Value = "Discovery"
+                },
+                new Tag()
+                {
+                    Id = "5",
+                    Value = "Nat Geo Wild"
+                },
+                new Tag()
+                {
+                    Id = "6",
+                    Value = "TV1000"
+                }
+            };
+            tags.ForEach(t => context.Tags.Add(t));
+            context.SaveChanges();
+
             Article art1 = new Article()
             {
                 Id = "1",
@@ -17,7 +55,8 @@ namespace DAL
                 "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
                 "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." +
                 " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." +
-                " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                Tags = new List<Tag>()
             };
             Article art2 = new Article()
             {
@@ -28,7 +67,8 @@ namespace DAL
                 "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
                 "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." +
                 " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." +
-                " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                Tags = new List<Tag>()
             };
             Article art3 = new Article()
             {
@@ -39,7 +79,8 @@ namespace DAL
                 "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
                 "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." +
                 " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." +
-                " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                Tags = new List<Tag>()
             };
             Article art4 = new Article()
             {
@@ -50,12 +91,25 @@ namespace DAL
                 "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
                 "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." +
                 " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." +
-                " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                Tags = new List<Tag>()
             };
             context.Articles.Add(art1);
             context.Articles.Add(art2);
             context.Articles.Add(art3);
             context.Articles.Add(art4);
+
+            context.SaveChanges();
+
+            AddTag(context, "BBC", "BBC");
+            AddTag(context, "BBC", "science");
+            AddTag(context, "Discovery", "science");
+            AddTag(context, "Nat Geo Wild", "science");
+            AddTag(context, "TV1000", "fiction");
+            AddTag(context, "Discovery", "Discovery");
+            AddTag(context, "Nat Geo Wild", "Nat Geo Wild");
+            AddTag(context, "TV1000", "TV1000");
+            context.SaveChanges();
 
             Comment cmt1 = new Comment()
             {
@@ -114,6 +168,13 @@ namespace DAL
 
             context.SaveChanges();
             base.Seed(context);
+        }
+        void AddTag(AppDbContext context, string articleTitle, string tagValue)
+        {
+            var art = context.Articles.SingleOrDefault(a => a.Title == articleTitle);
+            var tgs = art.Tags.SingleOrDefault(t => t.Value == tagValue);
+            if (tgs == null)
+                art.Tags.Add(context.Tags.Single(t => t.Value == tagValue));
         }
     }
 }

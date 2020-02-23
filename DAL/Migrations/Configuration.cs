@@ -1,4 +1,6 @@
-﻿using System.Data.Entity.Migrations;
+﻿using DAL.Models;
+using System;
+using System.Data.Entity.Migrations;
 
 namespace DAL.Migrations
 {

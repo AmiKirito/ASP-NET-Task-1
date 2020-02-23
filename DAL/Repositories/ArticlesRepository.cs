@@ -8,7 +8,7 @@ namespace DAL.Repositories
         AppDbContext context = new AppDbContext();
         public Article DbGetArticle(string id)
         {
-            Article article = context.Articles.Include("Comments").Where(a => a.Id == id).FirstOrDefault();
+            Article article = context.Articles.Include("Tags").Include("Comments").Where(a => a.Id == id).FirstOrDefault();
             return article;
         }
         public Article[] DbGetAllArticles()

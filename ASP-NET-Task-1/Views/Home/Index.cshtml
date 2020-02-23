@@ -11,8 +11,7 @@
 @foreach (var article in Model)
 {
     <h3>Название - @article.Title</h3>
-    <h4>Дата публикации - @article.PublishDate.ToShortDateString()</h4>
-    <h4>Содержание - @article.TextContent</h4>
-    <a href="@Url.Action("Details", "Article", new { id = article.Id })">Детали</a>
+    <h4>@article.TextContent.Substring(0,200)...</h4>
+    <a href="@Url.Action("Details", "Article", new { id = article.Id })">Подробнее</a>
     <hr />
 }

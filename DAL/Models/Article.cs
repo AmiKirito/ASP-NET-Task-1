@@ -13,5 +13,6 @@ namespace DAL.Models
         public DateTime PublishDate { get; set; }
         public string TextContent { get; set; }
         public List<Comment> Comments { get; set; }
+        public List<Tag> Tags { get; set; }
     }
 }

@@ -24,6 +24,17 @@
             <a class="nav-links" href="@Url.Action("Index", "Home")">Главная</a>
             <a class="nav-links" href="@Url.Action("Index", "Guest")">Гостевая</a>
             <a class="nav-links" href="@Url.Action("Index", "Survey")">Анкета</a>
+            @if (Request.Url.ToString().ToLower().Contains("home") || Request.Url.ToString().Length <= 23 )
+            {
+                <h3>Голосование</h3>
+                <fieldset name="rad1">
+                    <legend>Как вы думаете, когда люди будут жить на других планетах?</legend>
+                    <input type="radio" name="rad1" value="Через 50 лет" />Через 50 лет <br />
+                    <input type="radio" name="rad1" value="Через 50 лет" />Через 200 лет<br />
+                    <input type="radio" name="rad1" value="Через 50 лет" />Через 1000 лет<br />
+                    <input type="radio" name="rad1" value="Через 50 лет" />Скорей всего не скоро<br />
+                </fieldset>
+            }
         </div>
     </div>
     <footer>
